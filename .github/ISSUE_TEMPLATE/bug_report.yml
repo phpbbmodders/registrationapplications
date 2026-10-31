@@ -1,0 +1,35 @@
+name: Bug report
+description: Report a reproducible problem with Registration Applications.
+title: "[Bug]: "
+labels: ["bug"]
+body:
+  - type: input
+    id: extension_version
+    attributes:
+      label: Extension version or commit
+    validations:
+      required: true
+  - type: input
+    id: environment
+    attributes:
+      label: phpBB, PHP, database, and style versions
+    validations:
+      required: true
+  - type: textarea
+    id: reproduce
+    attributes:
+      label: Steps to reproduce
+      description: Use synthetic applicants; do not include private answers or credentials.
+    validations:
+      required: true
+  - type: textarea
+    id: expected
+    attributes:
+      label: Expected behavior and actual behavior
+    validations:
+      required: true
+  - type: textarea
+    id: logs
+    attributes:
+      label: Relevant errors
+      description: Remove account details, private answers, tokens, and credentials first.

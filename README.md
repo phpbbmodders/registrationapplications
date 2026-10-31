@@ -28,6 +28,14 @@ COPPA, account lifecycle, and upgrade behavior.
 See [testing](docs/testing.md) for disposable-board regression commands and
 [verification results](docs/verification.md) for the tested versions and limits.
 
+## Contributing
+
+Contributions are welcome!
+
+- **Bug reports**: [Open an issue](https://github.com/phpbbmodders/registrationapplications/issues).
+- **Everything else** (questions, feature requests, ideas, general discussion): [Use Discussions](https://github.com/phpbbmodders/registrationapplications/discussions).
+- Pull requests are welcome for bug fixes or discussed features.
+
 ## Acknowledgments
 
 - Code and documentation assisted by [Codex](https://openai.com/codex/).
