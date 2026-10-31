@@ -24,7 +24,8 @@ jobs:
       - name: Check PHP syntax
         run: git ls-files -z '*.php' | xargs -0 -n1 php -l
       - name: Validate Composer metadata JSON
-        run: php -r 'json_decode(file_get_contents("composer.json"), true); exit(json_last_error() === JSON_ERROR_NONE ? 0 : 1);'
+        run: |
+          php -r 'json_decode(file_get_contents("composer.json"), true); exit(json_last_error() === JSON_ERROR_NONE ? 0 : 1);'
   python-syntax:
     name: Python test helper syntax
     runs-on: ubuntu-latest
