@@ -1,0 +1,9 @@
+{% if loops.ra_questions|length %}
+<dl><dd><strong>{{ lang('RA_REGISTRATION_NOTICE') }}</strong></dd></dl>
+{% for question in loops.ra_questions %}
+<dl>
+	<dt><label for="ra_answer_{{ question.ID }}">{{ question.LABEL }}{% if question.REQUIRED %} *{% endif %}</label><br /><span id="ra_limits_{{ question.ID }}">{{ lang('RA_LIMITS', question.MIN, question.MAX) }} — {% if question.REQUIRED %}{{ lang('RA_REQUIRED') }}{% else %}{{ lang('RA_OPTIONAL') }}{% endif %}</span></dt>
+	<dd><textarea class="inputbox" id="ra_answer_{{ question.ID }}" name="ra_answers[{{ question.ID }}]" rows="5" cols="40" maxlength="{{ question.MAX }}" aria-describedby="ra_limits_{{ question.ID }}"{% if question.REQUIRED %} required{% endif %}>{{ question.ANSWER }}</textarea></dd>
+</dl>
+{% endfor %}
+{% endif %}

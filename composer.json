@@ -1,0 +1,13 @@
+{
+    "name": "phpbbmodders/registrationapplications",
+    "type": "phpbb-extension",
+    "description": "Private registration applications and a permission-controlled staff review queue.",
+    "version": "0.1.0-dev",
+    "license": "GPL-2.0-only",
+    "authors": [{"name": "phpBB Modders", "homepage": "https://github.com/phpbbmodders"}],
+    "require": {"php": ">=7.2"},
+    "extra": {
+        "display-name": "Registration Applications",
+        "soft-require": {"phpbb/phpbb": ">=3.3.0,<4.1.0@dev"}
+    }
+}

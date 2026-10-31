@@ -1,0 +1,12 @@
+{% include 'overall_header.html' %}
+<form action="{{ S_CONFIRM_ACTION }}" method="post">
+<div class="panel"><div class="inner">
+	<h2>{{ MESSAGE_TITLE }}</h2><p>{{ MESSAGE_TEXT }}</p>
+	<fieldset class="submit-buttons">
+		{{ S_HIDDEN_FIELDS }}{{ S_FORM_TOKEN }}
+		<button type="submit" name="confirm" value="{{ lang('YES') }}" class="button button1">{{ lang('YES') }}</button>
+		<button type="submit" name="cancel" value="{{ lang('NO') }}" class="button button2">{{ lang('NO') }}</button>
+	</fieldset>
+</div></div>
+</form>
+{% include 'overall_footer.html' %}

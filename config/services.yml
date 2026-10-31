@@ -1,0 +1,44 @@
+parameters:
+    phpbbmodders.registrationapplications.questions_table: '%core.table_prefix%ra_questions'
+    phpbbmodders.registrationapplications.applications_table: '%core.table_prefix%ra_applications'
+
+services:
+    phpbbmodders.registrationapplications.manager:
+        class: phpbbmodders\registrationapplications\service\manager
+        arguments:
+            - '@dbal.conn'
+            - '@config'
+            - '@auth'
+            - '@user'
+            - '@language'
+            - '@notification_manager'
+            - '@log'
+            - '@service_container'
+            - '%phpbbmodders.registrationapplications.questions_table%'
+            - '%phpbbmodders.registrationapplications.applications_table%'
+            - '%core.root_path%'
+            - '%core.php_ext%'
+
+    phpbbmodders.registrationapplications.listener:
+        class: phpbbmodders\registrationapplications\event\listener
+        arguments:
+            - '@phpbbmodders.registrationapplications.manager'
+            - '@request'
+            - '@template'
+            - '@language'
+            - '@auth'
+            - '@controller.helper'
+        tags:
+            - { name: event.listener }
+
+    phpbbmodders.registrationapplications.controller:
+        class: phpbbmodders\registrationapplications\controller\queue
+        arguments:
+            - '@phpbbmodders.registrationapplications.manager'
+            - '@request'
+            - '@template'
+            - '@language'
+            - '@auth'
+            - '@user'
+            - '@controller.helper'
+            - '@pagination'

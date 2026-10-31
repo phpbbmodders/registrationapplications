@@ -1,0 +1,47 @@
+<?php
+/** Registration Applications English strings. GPL-2.0-only. */
+if (!defined('IN_PHPBB'))
+{
+	exit;
+}
+$lang = array_merge($lang, array(
+	'ACP_RA_TITLE' => 'Registration Applications',
+	'ACP_RA_SETTINGS' => 'Registration application settings',
+	'RA_TITLE' => 'Applications',
+	'RA_REQUIREMENTS' => 'Registration Applications requires phpBB 3.3 or 4.0, administrator account activation, and board email enabled. Registration is unavailable while these settings are incompatible.',
+	'RA_SETTINGS_EXPLAIN' => 'Create up to 20 text questions. Disable an obsolete question to hide it from new registrations. Submitted applications keep the original question wording until reviewed. Grant the global application permissions to staff who should review applications.',
+	'RA_REGISTRATION_NOTICE' => 'Your answers are private and will be reviewed by authorized staff before your account is activated. Answers are erased after review.',
+	'RA_LIMITS' => '%1$d–%2$d characters when answered',
+	'RA_ANSWER_LENGTH' => '%1$s: an answer must contain %2$d–%3$d characters; required questions cannot be blank.',
+	'RA_REQUIRED' => 'Required',
+	'RA_OPTIONAL' => 'Optional',
+	'RA_QUEUE_EXPLAIN' => 'Only accounts awaiting registration approval appear here. Each decision requires confirmation.',
+	'RA_PENDING_TOTAL' => 'Pending applications: %d',
+	'RA_EMPTY' => 'There are no pending applications.',
+	'RA_APPROVE' => 'Approve',
+	'RA_DENY_DELETE' => 'Deny and delete account',
+	'RA_DENY_RETAIN' => 'Deny and retain inactive account',
+	'RA_CONFIRM_APPROVE' => 'Activate the account for %s? Application answers will be erased.',
+	'RA_CONFIRM_DELETE' => 'Permanently delete the pending account for %s and its application answers? Existing posts will be retained. This cannot be undone.',
+	'RA_CONFIRM_RETAIN' => 'Reject the application for %s and keep the account inactive? Application answers and activation keys will be erased. An administrator can activate the account separately later.',
+	'RA_DECIDED' => 'The application decision was saved.',
+	'RA_APPROVED_MAIL_FAILED' => 'The account was activated, but its activation email could not be sent. Check the board’s email settings and error log; do not approve the account again.',
+	'RA_STALE' => 'This application is no longer pending or the account is no longer eligible. Refresh the queue.',
+	'RA_MODE_CHANGED' => 'The denial setting changed. Refresh the queue and review the current action before trying again.',
+	'RA_DENIAL_MODE' => 'Denial behavior',
+	'RA_DENIAL_EXPLAIN' => 'Retaining accounts keeps usernames and email addresses reserved. Deletion permits registration again. Neither option bans the applicant. Rejection does not send an email. Approval sends phpBB’s standard activation email.',
+	'RA_QUESTIONS' => 'Registration questions',
+	'RA_NEW_QUESTION' => 'Add a question',
+	'RA_EDIT_QUESTION' => 'Question editor',
+	'RA_QUESTION_LABEL' => 'Question text',
+	'RA_MIN_CHARS' => 'Minimum characters',
+	'RA_MAX_CHARS' => 'Maximum characters (up to 10,000)',
+	'RA_ORDER' => 'Display order',
+	'RA_INVALID_SETTINGS' => 'Enter a nonempty question of up to 255 characters, a minimum from 0 to the maximum, a maximum from 1 to 10,000, and a nonnegative display order.',
+	'RA_QUESTION_LIMIT' => 'The 20-question limit has been reached. Edit an existing question.',
+	'ACL_M_RA_VIEW' => 'Can view private registration applications',
+	'ACL_M_RA_APPROVE' => 'Can approve registration applications',
+	'ACL_M_RA_DENY' => 'Can deny registration applications using the configured denial behavior',
+	'LOG_RA_APPROVED' => '<strong>Approved registration application</strong><br />» %s',
+	'LOG_RA_DENIED' => '<strong>Denied registration application</strong><br />» %s',
+));

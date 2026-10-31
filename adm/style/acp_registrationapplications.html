@@ -1,0 +1,27 @@
+{% include 'overall_header.html' %}
+<h1>{{ lang('ACP_RA_SETTINGS') }}</h1>
+<p>{{ lang('RA_SETTINGS_EXPLAIN') }}</p>
+{% if not S_RA_CONFIGURED %}<div class="errorbox"><p>{{ lang('RA_REQUIREMENTS') }}</p></div>{% endif %}
+{% if ERROR_MSG %}<div class="errorbox"><p>{{ ERROR_MSG }}</p></div>{% endif %}
+<form method="post" action="{{ U_ACTION }}">
+<fieldset><legend>{{ lang('RA_DENIAL_MODE') }}</legend>
+<dl><dt><label for="denial_mode">{{ lang('RA_DENIAL_MODE') }}</label></dt><dd><select id="denial_mode" name="denial_mode"><option value="retain"{% if not S_DELETE %} selected{% endif %}>{{ lang('RA_DENY_RETAIN') }}</option><option value="delete"{% if S_DELETE %} selected{% endif %}>{{ lang('RA_DENY_DELETE') }}</option></select></dd></dl>
+<p>{{ lang('RA_DENIAL_EXPLAIN') }}</p>
+<p class="submit-buttons"><input type="submit" name="save_settings" value="{{ lang('SUBMIT') }}" class="button1" /></p>{{ S_FORM_TOKEN }}
+</fieldset></form>
+<fieldset><legend>{{ lang('RA_QUESTIONS') }}</legend>
+<ul>{% for question in loops.questions %}<li><a href="{{ question.U_EDIT }}">{{ question.LABEL }}</a> — {% if question.ENABLED %}{{ lang('ENABLED') }}{% else %}{{ lang('DISABLED') }}{% endif %}</li>{% endfor %}</ul>
+<p><a href="{{ U_NEW }}">{{ lang('RA_NEW_QUESTION') }}</a></p>
+</fieldset>
+<form method="post" action="{{ U_ACTION }}">
+<fieldset><legend>{{ lang('RA_EDIT_QUESTION') }}</legend>
+<input type="hidden" name="question_id" value="{{ QUESTION_ID }}" />
+<dl><dt><label for="question_label">{{ lang('RA_QUESTION_LABEL') }}</label></dt><dd><input id="question_label" name="question_label" value="{{ QUESTION_LABEL }}" maxlength="255" size="60" required /></dd></dl>
+<dl><dt><label for="question_required">{{ lang('RA_REQUIRED') }}</label></dt><dd><input type="checkbox" id="question_required" name="question_required" value="1"{% if QUESTION_REQUIRED %} checked{% endif %} /></dd></dl>
+<dl><dt><label for="min_chars">{{ lang('RA_MIN_CHARS') }}</label></dt><dd><input type="number" id="min_chars" name="min_chars" value="{{ MIN_CHARS }}" min="0" max="10000" /></dd></dl>
+<dl><dt><label for="max_chars">{{ lang('RA_MAX_CHARS') }}</label></dt><dd><input type="number" id="max_chars" name="max_chars" value="{{ MAX_CHARS }}" min="1" max="10000" /></dd></dl>
+<dl><dt><label for="question_order">{{ lang('RA_ORDER') }}</label></dt><dd><input type="number" id="question_order" name="question_order" value="{{ QUESTION_ORDER }}" min="0" /></dd></dl>
+<dl><dt><label for="question_enabled">{{ lang('ENABLED') }}</label></dt><dd><input type="checkbox" id="question_enabled" name="question_enabled" value="1"{% if QUESTION_ENABLED %} checked{% endif %} /></dd></dl>
+<p class="submit-buttons"><input type="submit" name="save_question" value="{{ lang('SUBMIT') }}" class="button1" /></p>{{ S_FORM_TOKEN }}
+</fieldset></form>
+{% include 'overall_footer.html' %}

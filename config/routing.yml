@@ -1,0 +1,3 @@
+phpbbmodders_registrationapplications_queue:
+    path: /registration-applications
+    defaults: { _controller: phpbbmodders.registrationapplications.controller:handle }

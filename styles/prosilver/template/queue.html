@@ -1,0 +1,29 @@
+{% include 'overall_header.html' %}
+<h2>{{ lang('RA_TITLE') }}</h2>
+<p>{{ lang('RA_QUEUE_EXPLAIN') }}</p>
+{% if RA_MESSAGE %}<div class="panel"><div class="inner"><p role="status">{{ RA_MESSAGE }}</p></div></div>{% endif %}
+<p>{{ lang('RA_PENDING_TOTAL', RA_TOTAL) }}</p>
+{% for application in loops.applications %}
+<div class="panel"><div class="inner">
+	<h3>{{ application.USERNAME }}</h3>
+	<p>{{ application.SUBMITTED }}</p>
+	{% for answer in application.answers %}
+	<dl><dt><strong>{{ answer.LABEL }}</strong></dt><dd style="white-space: pre-wrap; overflow-wrap: anywhere;">{{ answer.TEXT }}</dd></dl>
+	{% endfor %}
+	{% if S_RA_APPROVE or S_RA_DENY %}
+	<form action="{{ S_RA_ACTION }}" method="post">
+		<fieldset class="submit-buttons">
+			<input type="hidden" name="applicant" value="{{ application.ID }}" />
+			<input type="hidden" name="denial_mode" value="{{ RA_DENIAL_MODE }}" />
+			{% if S_RA_APPROVE %}<button class="button button1" name="decision" value="approve" type="submit">{{ lang('RA_APPROVE') }}</button>{% endif %}
+			{% if S_RA_DENY %}<button class="button button2" name="decision" value="deny" type="submit">{% if RA_DENIAL_MODE == 'delete' %}{{ lang('RA_DENY_DELETE') }}{% else %}{{ lang('RA_DENY_RETAIN') }}{% endif %}</button>{% endif %}
+			{{ S_FORM_TOKEN }}
+		</fieldset>
+	</form>
+	{% endif %}
+</div></div>
+{% else %}
+<div class="panel"><div class="inner"><p>{{ lang('RA_EMPTY') }}</p></div></div>
+{% endfor %}
+{% if loops.pagination|length %}<div class="pagination">{% include 'pagination.html' %}</div>{% endif %}
+{% include 'overall_footer.html' %}
