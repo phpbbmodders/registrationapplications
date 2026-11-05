@@ -11,8 +11,10 @@ class ext extends \phpbb\extension\base
 		$language = $this->container->get('language');
 		$language->add_lang('common', 'phpbbmodders/registrationapplications');
 		$config = $this->container->get('config');
-		if (!phpbb_version_compare(PHPBB_VERSION, '3.3.0', '>=') ||
+		// phpBB 3.3.19 and PHP 8.3.36 carry security fixes this extension relies on.
+		if (!phpbb_version_compare(PHPBB_VERSION, '3.3.19', '>=') ||
 			!phpbb_version_compare(PHPBB_VERSION, '4.1.0-dev', '<') ||
+			PHP_VERSION_ID < 80336 ||
 			(int) $config['require_activation'] !== USER_ACTIVATION_ADMIN || !$config['email_enable'])
 		{
 			return $language->lang('RA_REQUIREMENTS');
